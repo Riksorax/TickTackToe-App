@@ -6,36 +6,47 @@
         xmlns:local="clr-namespace:TickTackToe_App"
         mc:Ignorable="d"
         Title="TickTackToe" Height="500" Width="500">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Aqua"/>
+            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="Foreground" Value="BlueViolet"/>
+            <Setter Property="BorderBrush" Value="Coral"/>
+        </Style>
+    </Window.Resources>
     
-    <Grid>
-                <!--Der Aufbau des Spielfelds-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        
-                <!--Defenition von den Buttons-->
+        <Grid>
 
-        <Button x:Name="bt1_0_0" Grid.Row="0" Grid.Column="0" Content="Button1" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        <Button x:Name="bt2_0_1" Grid.Row="0" Grid.Column="1" Content="Button2" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        <Button x:Name="bt3_0_2" Grid.Row="0" Grid.Column="2" Content="Button3" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        <Button x:Name="bt4_1_0" Grid.Row="1" Grid.Column="0" Content="Button4" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        <Button x:Name="bt5_1_1" Grid.Row="1" Grid.Column="1" Content="Button5" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        <Button x:Name="bt6_1_2" Grid.Row="1" Grid.Column="2" Content="Button6" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        <Button x:Name="bt7_2_0" Grid.Row="2" Grid.Column="0" Content="Button7" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        <Button x:Name="bt8_2_1" Grid.Row="2" Grid.Column="1" Content="Button8" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        <Button x:Name="bt9_2_2" Grid.Row="2" Grid.Column="2" Content="Button9" Background="Aqua" FontSize="45" Foreground="BlueViolet"/>
-        
-        
-        
-        
-    </Grid>
+            <!--Der Aufbau des Spielfelds-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--Defenition von den Buttons-->
+
+           
+
+            <Button x:Name="bt1_0_0" Grid.Row="0" Grid.Column="0" Content="Button1"/>
+            <Button x:Name="bt2_0_1" Grid.Row="0" Grid.Column="1" Content="Button2"/>
+            <Button x:Name="bt3_0_2" Grid.Row="0" Grid.Column="2" Content="Button3"/>
+            <Button x:Name="bt4_1_0" Grid.Row="1" Grid.Column="0" Content="Button4"/>
+            <Button x:Name="bt5_1_1" Grid.Row="1" Grid.Column="1" Content="Button5"/>
+            <Button x:Name="bt6_1_2" Grid.Row="1" Grid.Column="2" Content="Button6"/>
+            <Button x:Name="bt7_2_0" Grid.Row="2" Grid.Column="0" Content="Button7"/>
+            <Button x:Name="bt8_2_1" Grid.Row="2" Grid.Column="1" Content="Button8"/>
+            <Button x:Name="bt9_2_2" Grid.Row="2" Grid.Column="2" Content="Button9"/>
+
+
+
+
+        </Grid>
     
 </Window>
