@@ -33,19 +33,19 @@
 
             <!--Defenition von den Buttons-->
 
-            <Button x:Name="bt1_0_0" Grid.Row="0" Grid.Column="0" Content="Button1"/>
-            <Button x:Name="bt2_0_1" Grid.Row="0" Grid.Column="1" Content="Button2"/>
-            <Button x:Name="bt3_0_2" Grid.Row="0" Grid.Column="2" Content="Button3"/>
-            <Button x:Name="bt4_1_0" Grid.Row="1" Grid.Column="0" Content="Button4"/>
-            <Button x:Name="bt5_1_1" Grid.Row="1" Grid.Column="1" Content="Button5"/>
-            <Button x:Name="bt6_1_2" Grid.Row="1" Grid.Column="2" Content="Button6"/>
-            <Button x:Name="bt7_2_0" Grid.Row="2" Grid.Column="0" Content="Button7"/>
-            <Button x:Name="bt8_2_1" Grid.Row="2" Grid.Column="1" Content="Button8"/>
-            <Button x:Name="bt9_2_2" Grid.Row="2" Grid.Column="2" Content="Button9"/>
+        <Button x:Name="bt1_0_0" Grid.Row="0" Grid.Column="0" Content="Button1"/>
+        <Button x:Name="bt2_0_1" Grid.Row="0" Grid.Column="1" Content="Button2"/>
+        <Button x:Name="bt3_0_2" Grid.Row="0" Grid.Column="2" Content="Button3"/>
+        <Button x:Name="bt4_1_0" Grid.Row="1" Grid.Column="0" Content="Button4"/>
+        <Button x:Name="bt5_1_1" Grid.Row="1" Grid.Column="1" Content="Button5"/>
+        <Button x:Name="bt6_1_2" Grid.Row="1" Grid.Column="2" Content="Button6"/>
+        <Button x:Name="bt7_2_0" Grid.Row="2" Grid.Column="0" Content="Button7"/>
+        <Button x:Name="bt8_2_1" Grid.Row="2" Grid.Column="1" Content="Button8"/>
+        <Button x:Name="bt9_2_2" Grid.Row="2" Grid.Column="2" Content="Button9"/>
 
 
 
 
-        </Grid>
+    </Grid>
     
 </Window>

@@ -25,17 +25,18 @@ namespace TickTackToe_App
             InitializeComponent();
         }
 
-       
         private void Bt_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            
             switch (e.ChangedButton)
             {
-                case ChangedButton:
-                    Background = Brushes.Red;
+                case MouseButton.Left:
+                    Button.Background = Brushes.Red;
                     break;
                 default:
                     break;
             }
+            
         }
     }
 }
