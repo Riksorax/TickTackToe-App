@@ -20,23 +20,53 @@ namespace TickTackToe_App
     /// </summary>
     public partial class MainWindow : Window
     {
+        enum CasketStatus
+        {
+            Empty,
+        }
+
+        private CasketStatus[] _casket;
+        private bool _isGameEnd;
+
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Bt_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Casket_Click(object sender, RoutedEventArgs e)
         {
-            
-            switch (e.ChangedButton)
+            if (_isGameEnd)
             {
-                case MouseButton.Left:
-                    Button.Background = Brushes.Red;
-                    break;
-                default:
-                    break;
+                StartNewGame();
+                return;
             }
-            
+
+            if (IsGameEnd())
+            {
+
+            }
+        }
+
+        public void CasketEmpty()
+        {
+            _casket = new CasketStatus[9];
+            for (int i = 0; i < _casket.Length -1; i++)
+            {
+                _casket[i] = CasketStatus.Empty;
+            }
+
+            bt1_0_0.Content = string.Empty;
+            bt2_0_1.Content = string.Empty;
+            bt3_0_2.Content = string.Empty;
+
+            bt1_0_0.Background = (Brush)new BrushConverter().ConvertFrom("#14c600");
+            bt2_0_1.Background = (Brush)new BrushConverter().ConvertFrom("#14c600");
+            bt3_0_2.Background = (Brush)new BrushConverter().ConvertFrom("#14c600");
+
+            bt1_0_0.Foreground = (Brush)new BrushConverter().ConvertFrom("#F9F2E7");
+            bt2_0_1.Foreground = (Brush)new BrushConverter().ConvertFrom("#F9F2E7");
+            bt3_0_2.Foreground = (Brush)new BrushConverter().ConvertFrom("#F9F2E7");
         }
     }
 }
