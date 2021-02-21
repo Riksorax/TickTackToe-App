@@ -15,19 +15,27 @@ using System.Windows.Shapes;
 
 namespace TickTackToe_App
 {
+
+    
+        enum CasketStatus
+        {
+            Empty,
+            FirstPlayer,
+            SecondPlayer
+            
+        }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        enum CasketStatus
-        {
-            Empty,
-        }
+        private const string firstPlayerStone = "X";
+        private const string secondPlayerStone = "O";
 
         private CasketStatus[] _casket;
-        private bool _isGameEnd;
-
+        private bool isFirstPlayer;
+        private bool _isGameClose;
 
         public MainWindow()
         {
@@ -36,18 +44,66 @@ namespace TickTackToe_App
 
         private void Casket_Click(object sender, RoutedEventArgs e)
         {
-            if (_isGameEnd)
+            if (_isGameClose)
             {
                 StartNewGame();
                 return;
             }
 
-            if (IsGameEnd())
+            var aktuellesUicasket = (Button)sender;
+            var spaltenIndex = Grid.GetColumn(aktuellesUicasket);
+            var zeilenIndex = Grid.GetRow(aktuellesUicasket);
+            var logikIndex = spaltenIndex + (zeilenIndex * 3);
+
+            if (_casket[logikIndex] != CasketStatus.Empty)
             {
-
+                return;
             }
-        }
 
+            if (isFirstPlayer)
+            {
+                aktuellesUicasket.Content = firstPlayerStone;
+                _casket[logikIndex] = CasketStatus.FirstPlayer;
+                isFirstPlayer = false;
+            }
+            else
+            {
+                aktuellesUicasket.Content = secondPlayerStone;
+                aktuellesUicasket.Background = (Brush)new BrushConverter().ConvertFrom("#310000");
+                aktuellesUicasket.Foreground = (Brush)new BrushConverter().ConvertFrom("#14c600");
+                _casket[logikIndex] = CasketStatus.SecondPlayer;
+                isFirstPlayer = true;
+            }
+
+
+
+            if (IsGameClose())
+             {
+                 _isGameClose = true;
+             }
+            
+         }
+
+        private bool IsGameClose()
+         {
+             foreach (var currentcasket in _casket)
+             {
+                 if (currentcasket == CasketStatus.Empty)
+                 {
+                     return false;
+                 }
+             }            
+         }
+         
+
+            private void StartNewGame()
+        {
+            CasketEmpty();
+
+            isFirstPlayer = true;
+            _isGameClose = false;
+
+        }
         public void CasketEmpty()
         {
             _casket = new CasketStatus[9];
@@ -67,6 +123,6 @@ namespace TickTackToe_App
             bt1_0_0.Foreground = (Brush)new BrushConverter().ConvertFrom("#F9F2E7");
             bt2_0_1.Foreground = (Brush)new BrushConverter().ConvertFrom("#F9F2E7");
             bt3_0_2.Foreground = (Brush)new BrushConverter().ConvertFrom("#F9F2E7");
-        }
+        }        
     }
 }
