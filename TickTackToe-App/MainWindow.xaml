@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TickTackToe_App"
         mc:Ignorable="d"
-        Title="Tick Tack Toe" Height="500" Width="500">
+        Title="Tick Tack Toe" Height="500" Width="500" Loaded="Window_Loaded">
     
     <Window.Resources>
         <Style TargetType="Button">
@@ -17,7 +17,7 @@
         </Style>
     </Window.Resources>
     
-        <Grid>
+        <Grid x:Name="Spielfeld">
 
             <!--Der Aufbau des Spielfelds-->
             
