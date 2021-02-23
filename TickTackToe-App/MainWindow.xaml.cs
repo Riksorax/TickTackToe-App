@@ -15,21 +15,30 @@ using System.Windows.Shapes;
 
 namespace TickTackToe_App
 {
-
     
-        enum CasketStatus
-        {
-            Empty,
-            FirstPlayer,
-            SecondPlayer
-            
-        }
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool _istErsterSpielerAmZug = true;
 
+
+
+        private void Kaestchen_Click(object sender, RoutedEventArgs e)
+        {
+            Button geklickterButton = (Button)sender;
+
+            if (_istErsterSpielerAmZug)
+            {
+                geklickterButton.Content = "X";
+                _istErsterSpielerAmZug = false;
+            }
+            else
+            {
+                geklickterButton.Content = "O";
+                _istErsterSpielerAmZug = true;
+            }
+        }
     }
 }
