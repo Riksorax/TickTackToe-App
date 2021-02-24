@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TickTackToe_App</RootNamespace>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;Tick Tack Toe 0.0.1</Configurations>
   </PropertyGroup>
 
 </Project>

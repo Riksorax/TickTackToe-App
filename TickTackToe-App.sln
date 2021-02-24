@@ -3,18 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TickTackToe-App", "TickTackToe-App\TickTackToe-App.csproj", "{88FECEF7-BB14-4ACF-B77C-0D507F7B1E41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TickTackToe-App", "TickTackToe-App\TickTackToe-App.csproj", "{88FECEF7-BB14-4ACF-B77C-0D507F7B1E41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Tick Tack Toe 0.0.1|Any CPU = Tick Tack Toe 0.0.1|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{88FECEF7-BB14-4ACF-B77C-0D507F7B1E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{88FECEF7-BB14-4ACF-B77C-0D507F7B1E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88FECEF7-BB14-4ACF-B77C-0D507F7B1E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88FECEF7-BB14-4ACF-B77C-0D507F7B1E41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FECEF7-BB14-4ACF-B77C-0D507F7B1E41}.Tick Tack Toe 0.0.1|Any CPU.ActiveCfg = Tick Tack Toe 0.0.1|Any CPU
+		{88FECEF7-BB14-4ACF-B77C-0D507F7B1E41}.Tick Tack Toe 0.0.1|Any CPU.Build.0 = Tick Tack Toe 0.0.1|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
