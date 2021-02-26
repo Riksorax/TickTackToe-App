@@ -5,35 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TickTackToe_App"
         mc:Ignorable="d"
-        Title="Tick Tack Toe" Height="500" Width="500" Loaded="Window_Loaded">
-    
+        Title="Tick Tack Toe" Height="550" Width="500" Loaded="Window_Loaded">
+
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="Aqua"/>
             <Setter Property="Foreground" Value="BlueViolet"/>
             <Setter Property="BorderBrush" Value="Coral"/>
             <Setter Property="FontSize" Value="70"/>
-            <Setter Property="FontWeight" Value="Medium"/>            
+            <Setter Property="FontWeight" Value="Medium"/>
         </Style>
     </Window.Resources>
-    
-        <Grid x:Name="Spielfeld">
 
-            <!--Der Aufbau des Spielfelds-->
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+    <Grid x:Name="Spielfeld">
 
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <!--Der Aufbau des Spielfelds-->
 
-            <!--Defenition von den Buttons-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <!--Defenition von den Buttons-->
 
         <Button x:Name="bt1_0_0" Grid.Row="0" Grid.Column="0" Click="Kaestchen_Click"/>
         <Button x:Name="bt3_0_2" Grid.Row="0" Grid.Column="2" Click="Kaestchen_Click"/>
@@ -46,10 +47,11 @@
         <Button x:Name="bt7_2_0" Grid.Row="2" Grid.Column="0" Click="Kaestchen_Click"/>
         <Button x:Name="bt8_2_1" Grid.Row="2" Grid.Column="1" Click="Kaestchen_Click"/>
         <Button x:Name="bt9_2_2" Grid.Row="2" Grid.Column="2" Click="Kaestchen_Click"/>
-
+        
+        <Label x:Name="hinweise" FontSize="25" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="501" Grid.ColumnSpan="3" Height="47"/>
 
 
 
     </Grid>
-    
+
 </Window>

@@ -47,7 +47,7 @@ namespace TickTackToe_App
             // Wenn ein Kästenchen belegt ist bekommt man eine Hinweis
             if (geklickterButton.Content != null && geklickterButton.Content.ToString() != "")
             {
-                MessageBox.Show("Kästchen ist bereits belegt, versuch ein anderes!!!");
+                hinweise.Content = "Dieses Kästchen ist bereits belegt, versuch ein anderes!!!";
                 return;
             }
            
@@ -61,11 +61,14 @@ namespace TickTackToe_App
             else
             {
                 geklickterButton.Content = "O";
+                var vordergrund = geklickterButton.Foreground;
+                geklickterButton.Foreground = geklickterButton.Background;
+                geklickterButton.Background = vordergrund;
                 _istErsterSpielerAmZug = true;
             }
 
             //Hier wird die Background Farbe von dem Gewinner auf die ursprungfarbe zurück gesetzt und es wird ausgegeben welcher Spiele gewonnen hat
-            var reiheGewonnen = sucheReiheGewonnen();
+            var reiheGewonnen = SucheReiheGewonnen();
 
             if (reiheGewonnen.Count == 3)
             {
@@ -73,11 +76,11 @@ namespace TickTackToe_App
 
                 if (_istErsterSpielerAmZug)
                 {
-                    MessageBox.Show("Spieler 2 mit dem O hat gewonnen");                   
+                    hinweise.Content = "Spieler 2 mit dem O hat gewonnen";
                 }
                 else
                 {
-                    MessageBox.Show("Spieler 1 mit dem X hat gewonnen");
+                    hinweise.Content = "Spieler 1 mit dem X hat gewonnen";
                 }
                 Spielfeldleeren();
             }
@@ -91,7 +94,7 @@ namespace TickTackToe_App
             {
                 Button keastchen = item as Button;
 
-                if(keastchen != null && keastchen.Content == string.Empty)
+                if (keastchen == null || keastchen.Content.ToString() == string.Empty)
                 {
                     return false;
                 }
@@ -106,7 +109,7 @@ namespace TickTackToe_App
         }
 
         //IN einer neuen Liste wird hier defintiert welche Reihen kombinatoinen es gibt
-        private List<Button> sucheReiheGewonnen()           
+        private List<Button> SucheReiheGewonnen()           
         {
             var resultat = new List<Button>();
 
@@ -194,7 +197,7 @@ namespace TickTackToe_App
 
             bt7_2_0.Content = string.Empty;
             bt8_2_1.Content = string.Empty;
-            bt9_2_2.Content = string.Empty;
+            bt9_2_2.Content = string.Empty;           
 
             bt1_0_0.Background = (Brush)new BrushConverter().ConvertFrom("#00ffff");
             bt2_0_1.Background = (Brush)new BrushConverter().ConvertFrom("#00ffff");
