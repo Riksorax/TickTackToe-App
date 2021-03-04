@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TickTackToe_App"
         mc:Ignorable="d"
-        Title="Tick Tack Toe" Height="550" Width="500" Loaded="Window_Loaded">
+        Title="Tick Tack Toe" Loaded="Window_Loaded" Width="620" Height="620">
 
     <Window.Resources>
         <Style TargetType="Button">
@@ -28,10 +28,10 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
         <!--Defenition von den Buttons-->
@@ -40,17 +40,53 @@
         <Button x:Name="bt3_0_2" Grid.Row="0" Grid.Column="2" Click="Kaestchen_Click"/>
         <Button x:Name="bt2_0_1" Grid.Row="0" Grid.Column="1" Click="Kaestchen_Click"/>
 
-        <Button x:Name="bt4_1_0" Grid.Row="1" Grid.Column="0" Click="Kaestchen_Click"/>
-        <Button x:Name="bt5_1_1" Grid.Row="1" Grid.Column="1" Click="Kaestchen_Click"/>
-        <Button x:Name="bt6_1_2" Grid.Row="1" Grid.Column="2" Click="Kaestchen_Click"/>
+        <Button x:Name="bt4_1_0" Grid.Column="0" Click="Kaestchen_Click" Margin="0,146,0,0" Grid.RowSpan="2"/>
+        <Button x:Name="bt5_1_1" Grid.Column="1" Click="Kaestchen_Click" Margin="0,146,0,0" Grid.RowSpan="2"/>
+        <Button x:Name="bt6_1_2" Grid.Column="2" Click="Kaestchen_Click" Margin="0,146,0,0" Grid.RowSpan="2"/>
 
-        <Button x:Name="bt7_2_0" Grid.Row="2" Grid.Column="0" Click="Kaestchen_Click"/>
-        <Button x:Name="bt8_2_1" Grid.Row="2" Grid.Column="1" Click="Kaestchen_Click"/>
-        <Button x:Name="bt9_2_2" Grid.Row="2" Grid.Column="2" Click="Kaestchen_Click"/>
+        <Button x:Name="bt7_2_0" Grid.Row="1" Grid.Column="0" Click="Kaestchen_Click" Margin="0,146,0,0" Grid.RowSpan="2"/>
+        <Button x:Name="bt8_2_1" Grid.Row="1" Grid.Column="1" Click="Kaestchen_Click" Margin="0,146,0,0" Grid.RowSpan="2"/>
+        <Button x:Name="bt9_2_2" Grid.Row="1" Grid.Column="2" Click="Kaestchen_Click" Margin="0,146,0,0" Grid.RowSpan="2"/>
+
+        <Label x:Name="lb_Hinweise" Content="Hinweis" 
+               FontSize="16" FontWeight="Medium"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Top" 
+               Margin="0,50,0,50" Grid.Row="3" 
+               FontStyle="Normal" Grid.Column="1" 
+               HorizontalAlignment="Stretch"/>
+
+        <Label x:Name="Points_Name1" Content="Label1" HorizontalAlignment="Left" 
+               Margin="10,15,0,0" Grid.Row="3" 
+               VerticalAlignment="Top" Grid.Column="1" 
+               Height="25" Width="175"/>
+
+        <Label x:Name="Points_Name2" Content="Label2" HorizontalAlignment="Left" 
+               Margin="10,100,0,0" Grid.Row="3" 
+               VerticalAlignment="Top" Grid.Column="1" 
+               Height="25" Width="175"/>
         
-        <Label x:Name="hinweise" FontSize="25" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="501" Grid.ColumnSpan="3" Height="47"/>
+        <TextBox x:Name="Player1" HorizontalAlignment="Left" Margin="10,15,0,0"
+                 Grid.Row="3" Text="TextBox1" 
+                 TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="175" Height="25"/>
 
 
+        <TextBox x:Name="Player2" HorizontalAlignment="Left" Margin="10,100,0,0"
+                 Grid.Row="3" Text="TextBox2" TextWrapping="Wrap"
+                 VerticalAlignment="Top" Width="175" Height="25"/>
+
+
+        <Button x:Name="bt_reset" Content="Zurücksezten" FontSize="20" 
+                Foreground="Black" Background="Gray"
+                Grid.Column="2" HorizontalAlignment="Center"
+                Margin="0,20,0,0" Grid.Row="3" 
+                VerticalAlignment="Top" Height="100" Width="172" Click="Bt_Zurücksetzen_Click"/>
+
+        <Button x:Name="bt_Name" Content="Name Bestätigen"  FontSize="20" 
+                Foreground="Black" Background="Gray"
+                HorizontalAlignment="Left" Margin="10,50,0,0" 
+                Grid.Row="3" VerticalAlignment="Top" 
+                Height="40" Width="175"/>
 
     </Grid>
 

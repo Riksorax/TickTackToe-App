@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Windows.Threading;
 
 namespace TickTackToe_App
 {
@@ -23,31 +24,45 @@ namespace TickTackToe_App
     public partial class MainWindow : Window
     {
         private bool _istErsterSpielerAmZug = true;
-        
-        
-        
+        private bool _istSpielBeendet = false;
+
+        private readonly DispatcherTimer _blendeHinweisAusTimer = new DispatcherTimer();
+
 
         public MainWindow()
         {
             InitializeComponent();
+            _blendeHinweisAusTimer.Tick += HinweiseAusblenden;
         }
 
-       
+        // Hier wird das Label was Hinweise anzeigt ausgeblendet
+        private void HinweiseAusblenden(object sender, EventArgs e)
+        {
+            _blendeHinweisAusTimer.Stop();
+            lb_Hinweise.Visibility = Visibility.Hidden;
+        }
+
+        // Hier wird das Grid angesprochen und geleert
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _istErsterSpielerAmZug = true;
+            Spielfeldleeren();
+        }
+
         private void Kaestchen_Click(object sender, RoutedEventArgs e)
         {
             Button geklickterButton = (Button)sender;
 
             // Überprufng vom Spielfeld voll ja oder nein
-            if (IstSpielfeldVoll())
+            if (_istSpielBeendet)
             {
-                Spielfeldleeren();
-                _istErsterSpielerAmZug = true;
+                Spielfeldleeren();                
             }
 
             // Wenn ein Kästenchen belegt ist bekommt man eine Hinweis
             if (geklickterButton.Content != null && geklickterButton.Content.ToString() != "")
             {
-                hinweise.Content = "Dieses Kästchen ist bereits belegt, versuch ein anderes!!!";
+                HinweiseZeigen("Das Feld ist belegt", 1);
                 return;
             }
            
@@ -60,12 +75,10 @@ namespace TickTackToe_App
             }
             else
             {
-                geklickterButton.Content = "O";
-                var vordergrund = geklickterButton.Foreground;
-                geklickterButton.Foreground = geklickterButton.Background;
-                geklickterButton.Background = vordergrund;
+                geklickterButton.Content = "O";                
                 _istErsterSpielerAmZug = true;
             }
+            
 
             //Hier wird die Background Farbe von dem Gewinner auf die ursprungfarbe zurück gesetzt und es wird ausgegeben welcher Spiele gewonnen hat
             var reiheGewonnen = SucheReiheGewonnen();
@@ -76,38 +89,38 @@ namespace TickTackToe_App
 
                 if (_istErsterSpielerAmZug)
                 {
-                    hinweise.Content = "Spieler 2 mit dem O hat gewonnen";
+                    HinweiseZeigen("O hat gewonnen", 2);
                 }
                 else
                 {
-                    hinweise.Content = "Spieler 1 mit dem X hat gewonnen";
+                    HinweiseZeigen("X hat gewonnen", 2);
                 }
-                Spielfeldleeren();
+                _istSpielBeendet = true;
+                return;
             }
-        }
 
-        
-        // Hier wird überprüft ob das Spielfeld von unten voll ist wenn ja einmal leeren und wenn nicht, passier nix
-        private bool IstSpielfeldVoll()
-        {
-            foreach (var item in Spielfeld.Children)
+            //Wenn das Spielfeld Voll ist kommt die Meldung das keiner Gewonnen hat und das Spiel startet von neu
+            if (IstSpielfeldVoll())
             {
-                Button keastchen = item as Button;
-
-                if (keastchen == null || keastchen.Content.ToString() == string.Empty)
-                {
-                    return false;
-                }
+                HinweiseZeigen("Keiner hat gewonnen", 2);
+                _istSpielBeendet = true;
             }
-            return true;
         }
 
-        // Hier wird das Grid angesprochen und geleert
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        // Diese Methode ist dafür da das im Lable hinweise angezeigt werden und ein Timer der ablöuft wie lange das Lable die Hinweise anzeigt
+        private void HinweiseZeigen(string hinweis,  int ausblendeZeitInSekunden = 0)
         {
-            Spielfeldleeren();
-        }
+            lb_Hinweise.Content = hinweis;
+            lb_Hinweise.Visibility = Visibility.Visible;
 
+            if ((ausblendeZeitInSekunden > 0) && (!_blendeHinweisAusTimer.IsEnabled))
+            {
+                _blendeHinweisAusTimer.Interval = TimeSpan.FromSeconds(ausblendeZeitInSekunden);
+                _blendeHinweisAusTimer.Start();
+            }
+        }       
+        
+        
         //IN einer neuen Liste wird hier defintiert welche Reihen kombinatoinen es gibt
         private List<Button> SucheReiheGewonnen()           
         {
@@ -184,9 +197,36 @@ namespace TickTackToe_App
             drittesKaesten.Background = (Brush)new BrushConverter().ConvertFrom("#FFCD00");
         }
 
+        // Hier wird überprüft ob das Spielfeld von unten voll ist wenn ja einmal leeren und wenn nicht, passier nix
+        private bool IstSpielfeldVoll()
+        {
+            foreach (var item in Spielfeld.Children)
+            {
+                Button keastchen = item as Button;
+
+                if (keastchen != null && keastchen.Content.ToString() == string.Empty)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void Bt_Zurücksetzen_Click(object sender, RoutedEventArgs e)
+        {
+            Spielfeldleeren();
+        }
+
+
         // Hier wird jeder einzelne Button geleert und dann in die ursprungsfarbe zurück geändert
         private void Spielfeldleeren()
         {
+            _istSpielBeendet = false;
+            _istErsterSpielerAmZug = true;
+
+            lb_Hinweise.Visibility = Visibility.Hidden;
+            lb_Hinweise.Content = string.Empty;
+
             bt1_0_0.Content = string.Empty;
             bt2_0_1.Content = string.Empty;
             bt3_0_2.Content = string.Empty;
@@ -209,5 +249,6 @@ namespace TickTackToe_App
             bt8_2_1.Background = (Brush)new BrushConverter().ConvertFrom("#00ffff");
             bt9_2_2.Background = (Brush)new BrushConverter().ConvertFrom("#00ffff");
         }
+
     }
 }
