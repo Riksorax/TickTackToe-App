@@ -28,8 +28,11 @@ namespace TickTackToe_App
 
         private readonly DispatcherTimer _blendeHinweisAusTimer = new DispatcherTimer();
 
+        private int points = 0;
 
         public MainWindow()
+
+
         {
             InitializeComponent();
             _blendeHinweisAusTimer.Tick += HinweiseAusblenden;
@@ -43,13 +46,13 @@ namespace TickTackToe_App
         }
 
         // Hier wird das Grid angesprochen und geleert
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _istErsterSpielerAmZug = true;
             Spielfeldleeren();
         }
 
-        private void Kaestchen_Click(object sender, RoutedEventArgs e)
+        public void Kaestchen_Click(object sender, RoutedEventArgs e)
         {
             Button geklickterButton = (Button)sender;
 
@@ -89,10 +92,14 @@ namespace TickTackToe_App
 
                 if (_istErsterSpielerAmZug)
                 {
+                    points += 10;
+                    lb_Points2.Content = points;
                     HinweiseZeigen("O hat gewonnen", 2);
                 }
                 else
                 {
+                    points += 10;
+                    lb_Points1.Content = points;
                     HinweiseZeigen("X hat gewonnen", 2);
                 }
                 _istSpielBeendet = true;
@@ -102,6 +109,7 @@ namespace TickTackToe_App
             //Wenn das Spielfeld Voll ist kommt die Meldung das keiner Gewonnen hat und das Spiel startet von neu
             if (IstSpielfeldVoll())
             {
+                points = 0;
                 HinweiseZeigen("Keiner hat gewonnen", 2);
                 _istSpielBeendet = true;
             }
@@ -198,7 +206,7 @@ namespace TickTackToe_App
         }
 
         // Hier wird überprüft ob das Spielfeld von unten voll ist wenn ja einmal leeren und wenn nicht, passier nix
-        private bool IstSpielfeldVoll()
+        public bool IstSpielfeldVoll()
         {
             foreach (var item in Spielfeld.Children)
             {
@@ -212,14 +220,10 @@ namespace TickTackToe_App
             return true;
         }
 
-        private void Bt_Zurücksetzen_Click(object sender, RoutedEventArgs e)
-        {
-            Spielfeldleeren();
-        }
-
+        
 
         // Hier wird jeder einzelne Button geleert und dann in die ursprungsfarbe zurück geändert
-        private void Spielfeldleeren()
+        public void Spielfeldleeren()
         {
             _istSpielBeendet = false;
             _istErsterSpielerAmZug = true;
@@ -250,5 +254,29 @@ namespace TickTackToe_App
             bt9_2_2.Background = (Brush)new BrushConverter().ConvertFrom("#00ffff");
         }
 
+        public void Bt_Zurücksetzen_Click(object sender, RoutedEventArgs e)
+        {
+            Spielfeldleeren();
+            lb_Player1.Content = string.Empty;
+            lb_Player2.Content = string.Empty;
+            lb_Points1.Content = string.Empty;
+            lb_Points2.Content = string.Empty;
+        }
+
+        public void Bt_PlayerName_Click(object sender, RoutedEventArgs e)
+        {
+            string player_Name1 = txt_Player1.Text;
+            string player_Name2 = txt_Player2.Text;
+
+            lb_Player1.Content = player_Name1;
+            lb_Player2.Content = player_Name2;
+        }
+
+        public void PlayerPoints()
+        {
+             
+        }
+
+       
     }
 }

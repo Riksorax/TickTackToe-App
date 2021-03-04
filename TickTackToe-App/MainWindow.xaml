@@ -55,38 +55,50 @@
                FontStyle="Normal" Grid.Column="1" 
                HorizontalAlignment="Stretch"/>
 
-        <Label x:Name="Points_Name1" Content="Label1" HorizontalAlignment="Left" 
+        <Label x:Name="lb_Player1" Content="" HorizontalAlignment="Left" 
                Margin="10,15,0,0" Grid.Row="3" 
                VerticalAlignment="Top" Grid.Column="1" 
-               Height="25" Width="175"/>
+               Height="25" Width="78.5"/>
 
-        <Label x:Name="Points_Name2" Content="Label2" HorizontalAlignment="Left" 
+        <Label x:Name="lb_Player2" Content="" HorizontalAlignment="Left" 
                Margin="10,100,0,0" Grid.Row="3" 
                VerticalAlignment="Top" Grid.Column="1" 
-               Height="25" Width="175"/>
-        
-        <TextBox x:Name="Player1" HorizontalAlignment="Left" Margin="10,15,0,0"
-                 Grid.Row="3" Text="TextBox1" 
+               Height="25" Width="78.5"/>
+
+        <Label x:Name="lb_Points1" Content="" HorizontalAlignment="Left" 
+            Margin="110,15,0,0" Grid.Row="3" 
+            VerticalAlignment="Top" Grid.Column="1" 
+            Height="25" Width="78"/>
+
+        <Label x:Name="lb_Points2" Content="" HorizontalAlignment="Left" 
+            Margin="110,100,0,0" Grid.Row="3" 
+            VerticalAlignment="Top" Grid.Column="1" 
+            Height="25" Width="78"/>
+
+
+        <TextBox x:Name="txt_Player1" HorizontalAlignment="Left" Margin="10,15,0,0"
+                 Grid.Row="3"
                  TextWrapping="Wrap" VerticalAlignment="Top"
                  Width="175" Height="25"/>
 
 
-        <TextBox x:Name="Player2" HorizontalAlignment="Left" Margin="10,100,0,0"
-                 Grid.Row="3" Text="TextBox2" TextWrapping="Wrap"
+        <TextBox x:Name="txt_Player2" HorizontalAlignment="Left" Margin="10,100,0,0"
+                 Grid.Row="3"
                  VerticalAlignment="Top" Width="175" Height="25"/>
 
 
-        <Button x:Name="bt_reset" Content="Zurücksezten" FontSize="20" 
+        <Button x:Name="bt_Reset" Content="Zurücksezten" FontSize="20" 
                 Foreground="Black" Background="Gray"
                 Grid.Column="2" HorizontalAlignment="Center"
                 Margin="0,20,0,0" Grid.Row="3" 
                 VerticalAlignment="Top" Height="100" Width="172" Click="Bt_Zurücksetzen_Click"/>
 
-        <Button x:Name="bt_Name" Content="Name Bestätigen"  FontSize="20" 
+        <Button x:Name="bt_PlayerName" Content="Name Bestätigen"  FontSize="20" 
                 Foreground="Black" Background="Gray"
                 HorizontalAlignment="Left" Margin="10,50,0,0" 
                 Grid.Row="3" VerticalAlignment="Top" 
-                Height="40" Width="175"/>
+                Height="40" Width="175" Click="Bt_PlayerName_Click"/>
+        
 
     </Grid>
 
