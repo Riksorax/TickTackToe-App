@@ -29,6 +29,7 @@ namespace TickTackToe_App
         private readonly DispatcherTimer _blendeHinweisAusTimer = new DispatcherTimer();
 
         private int points = 0;
+        private int points2 = 0;
 
         public MainWindow()
 
@@ -92,8 +93,8 @@ namespace TickTackToe_App
 
                 if (_istErsterSpielerAmZug)
                 {
-                    points += 10;
-                    lb_Points2.Content = points;
+                    points2 += 10;
+                    lb_Points2.Content = points2;
                     HinweiseZeigen("O hat gewonnen", 2);
                 }
                 else
