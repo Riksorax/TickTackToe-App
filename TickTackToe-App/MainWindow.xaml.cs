@@ -21,8 +21,27 @@ namespace TickTackToe_App
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    
+
+    public partial class MainWindow
     {
+        //public void Save()
+        //{
+        //    string path = @"C:\Users\Frank\Documents\Programieren\C#\TIckTackToe-App\TickTackToe-App\TickTackToe-App\temp\TestSpeicher.txt";
+
+        //    if (File.Exists(path))
+        //    {
+        //        using StreamWriter sw = File.CreateText(path);
+        //        sw.WriteLine(lb_Player1.Content);
+        //        sw.WriteLine(lb_Player2.Content);
+        //        sw.WriteLine(lb_Points1.Content);
+        //        sw.WriteLine(lb_Points2.Content);
+        //    }
+
+        //}
+        
+
+
         private bool _istErsterSpielerAmZug = true;
         private bool _istSpielBeendet = false;
 
@@ -34,13 +53,14 @@ namespace TickTackToe_App
         public MainWindow()
 
 
+
         {
             InitializeComponent();
             _blendeHinweisAusTimer.Tick += HinweiseAusblenden;
         }
 
         // Hier wird das Label was Hinweise anzeigt ausgeblendet
-        private void HinweiseAusblenden(object sender, EventArgs e)
+        public void HinweiseAusblenden(object sender, EventArgs e)
         {
             _blendeHinweisAusTimer.Stop();
             lb_Hinweise.Visibility = Visibility.Hidden;
@@ -109,15 +129,14 @@ namespace TickTackToe_App
 
             //Wenn das Spielfeld Voll ist kommt die Meldung das keiner Gewonnen hat und das Spiel startet von neu
             if (IstSpielfeldVoll())
-            {
-                points = 0;
+            {                
                 HinweiseZeigen("Keiner hat gewonnen", 2);
                 _istSpielBeendet = true;
             }
         }
 
         // Diese Methode ist dafür da das im Lable hinweise angezeigt werden und ein Timer der ablöuft wie lange das Lable die Hinweise anzeigt
-        private void HinweiseZeigen(string hinweis,  int ausblendeZeitInSekunden = 0)
+        public void HinweiseZeigen(string hinweis,  int ausblendeZeitInSekunden = 0)
         {
             lb_Hinweise.Content = hinweis;
             lb_Hinweise.Visibility = Visibility.Visible;
@@ -130,7 +149,7 @@ namespace TickTackToe_App
         }       
         
         
-        //IN einer neuen Liste wird hier defintiert welche Reihen kombinatoinen es gibt
+        //In einer neuen Liste wird hier defintiert welche Reihen kombinatoinen es gibt
         private List<Button> SucheReiheGewonnen()           
         {
             var resultat = new List<Button>();
@@ -187,7 +206,7 @@ namespace TickTackToe_App
         }
 
         //
-        private bool IstgleicherSpielStein(Button erstesKaestchen, Button zweitesKaestchen, Button drittesKaestchen)
+        public bool IstgleicherSpielStein(Button erstesKaestchen, Button zweitesKaestchen, Button drittesKaestchen)
         {
             if(erstesKaestchen.Content.ToString() != ""
                 && erstesKaestchen.Content.ToString() == zweitesKaestchen.Content.ToString()
@@ -199,7 +218,7 @@ namespace TickTackToe_App
         }
 
         //Hier wird die Gewinner Reihe in Geld makiert
-        private void ReiheGewonneBackground(Button erstesKaestchen, Button zweitesKaestechen, Button drittesKaesten)
+        public void ReiheGewonneBackground(Button erstesKaestchen, Button zweitesKaestechen, Button drittesKaesten)
         {
             erstesKaestchen.Background = (Brush)new BrushConverter().ConvertFrom("#FFCD00");
             zweitesKaestechen.Background = (Brush)new BrushConverter().ConvertFrom("#FFCD00");
@@ -273,11 +292,8 @@ namespace TickTackToe_App
             lb_Player2.Content = player_Name2;
         }
 
-        public void PlayerPoints()
-        {
-             
-        }
+        
 
-       
+
     }
 }
